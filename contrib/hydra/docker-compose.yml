@@ -107,6 +107,17 @@ services:
     networks:
       - intranet
 
+  admin_ui:
+    image: ghcr.io/dfoxg/kratos-admin-ui:v2.4.0
+    ports:
+      - '8000:8080'
+    restart: unless-stopped
+    environment:
+      - KRATOS_ADMIN_URL=http://kratos:4434
+      - KRATOS_PUBLIC_URL=http://kratos:4433
+    networks:
+      - intranet
+
 # Sending emails is not part of this demo, so this is commented out:
 #
 #  mailslurper:
