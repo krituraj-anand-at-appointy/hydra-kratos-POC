@@ -7,6 +7,7 @@ This guide provides instructions to start the Hydra and Kratos self-hosted serve
 To start all the services on your local Docker machine, run the following command:
 
 ```bash
+cd contrib/hydra/
 docker-compose up --build
 ```
 
@@ -19,6 +20,7 @@ Once all services are running, you will need to create a new Hydra client to per
 Run the following command to create a new client using Hydra:
 
 ```bash
+cd contrib/hydra/
 code_client=$(docker-compose exec hydra \
     hydra create client \
     --endpoint http://127.0.0.1:4445 \
@@ -34,6 +36,7 @@ code_client=$(docker-compose exec hydra \
 After the client is created, extract the client_id and client_secret using the following commands:
 
 ```bash
+cd contrib/hydra/
 code_client_id=$(echo $code_client | jq -r '.client_id')
 code_client_secret=$(echo $code_client | jq -r '.client_secret')
 ```
@@ -43,6 +46,7 @@ code_client_secret=$(echo $code_client | jq -r '.client_secret')
 To initiate the authorization code flow, run the following command:
 
 ```bash
+cd contrib/hydra/
 docker-compose exec hydra \
     hydra perform authorization-code \
     --client-id $code_client_id \
