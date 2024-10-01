@@ -62,4 +62,85 @@ Open a browser and go to http://localhost:5555. This will begin the authenticati
 
 
 
+# Multiple Domian Single SignOn Demo
+
+To verify if Single Sign-On (SSO) works across multiple domains using Hydra and Kratos integration, we will set up two different projects from the current repository named POC1 and POC2. Each project will have its own Hydra client.
+
+## Step 1 : Create Hydra Clients
+
+We will start by creating two OAuth2 clients for Hydra using the following requests:
+
+```bash
+curl --location 'http://127.0.0.1:4445/admin/clients' \
+--header 'Content-Type: application/json' \
+--header 'Accept: application/json' \
+--header 'Cookie: csrf_token_be481debe9e1ebcf14d99f6f631d9a520ca6701ba0f3e4398508af30ebb1f509=coe3Z55OqL2b94fCaXvUXYnl5sPb7QiJu8gEdazIYJk=' \
+--data '{
+    "client_name": "Test OAuth2 Client 2",
+    "client_secret": "secret",
+    "grant_types": [
+        "authorization_code",
+        "refresh_token"
+    ],
+    "redirect_uris": [
+        "http://app2.local:8081/callback"
+    ],
+    "post_logout_redirect_uris": [
+        "http://app2.local:8081"
+    ],
+    "response_types": [
+        "code",
+        "id_token"
+    ],
+    "scope": "openid offline",
+    "token_endpoint_auth_method": "client_secret_post"
+}'
+
+curl --location 'http://127.0.0.1:4445/admin/clients' \
+--header 'Content-Type: application/json' \
+--header 'Accept: application/json' \
+--header 'Cookie: csrf_token_be481debe9e1ebcf14d99f6f631d9a520ca6701ba0f3e4398508af30ebb1f509=coe3Z55OqL2b94fCaXvUXYnl5sPb7QiJu8gEdazIYJk=' \
+--data '{
+    "client_name": "Test OAuth2 Client 1",
+    "client_secret": "secret",
+    "grant_types": [
+        "authorization_code",
+        "refresh_token"
+    ],
+    "redirect_uris": [
+        "http://app2.local:8080/callback"
+    ],
+    "post_logout_redirect_uris": [
+        "http://app2.local:8080"
+    ],
+    "response_types": [
+        "code",
+        "id_token"
+    ],
+    "scope": "openid offline",
+    "token_endpoint_auth_method": "client_secret_post"
+}'
+```
+
+## Step 2: Update Client IDs
+
+Once both clients are created, you will receive unique client IDs for each Hydra client. Update the corresponding client IDs in the oauthConfig section of the main.go files for each project:
+
+Test OAuth2 Client 1 → POC1 main.go (oauthConfig)
+Test OAuth2 Client 2 → POC2 main.go (oauthConfig)
+
+## Step 3: Start Both Servers
+
+Start the servers for both POC1 and POC2.
+
+## Step4 : Configure Hosts File
+
+Map the following domains to localhost in your system's hosts file (typically located at /etc/hosts):
+
+127.0.0.1   app1.local
+127.0.0.1   app2.local
+
+## Step5 : Test SSO
+
+Open app1.local:8080 and app2.local:8081 in your browser (e.g., Chrome). After logging in on the first domain, you will not need to log in again on the second domain, as Kratos will recognize the user session and handle the SSO seamlessly.
 
