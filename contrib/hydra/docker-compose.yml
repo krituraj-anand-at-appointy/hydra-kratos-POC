@@ -108,7 +108,7 @@ services:
       - intranet
 
   admin_ui:
-    image: ghcr.io/dfoxg/kratos-admin-ui:v2.4.0
+    image: kratos-admin-ui:latest
     ports:
       - '8000:8080'
     restart: unless-stopped

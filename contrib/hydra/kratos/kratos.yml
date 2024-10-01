@@ -29,26 +29,6 @@ selfservice:
           # Set 'origin' to the exact URL of the page that prompts the user to use WebAuthn. You must include the scheme, host, and port.
           origin: http://localhost:3000
       enabled: true
-    oidc:
-      enabled: true
-      config:
-        providers:
-          - id: Okta
-            provider: generic
-            client_id: fed8218c63c2a00a312ec5d6a5b6291b3f4b618a
-            client_secret: 7fe80232053525d40ef53d0047059113c3c979dfbc436e00
-            mapper_url: base64://bG9jYWwgY2xhaW1zID0gc3RkLmV4dFZhcignY2xhaW1zJyk7CnsKICBpZGVudGl0eTogewogICAgdHJhaXRzOiB7CiAgICAgIC8vIEFsbG93aW5nIHVudmVyaWZpZWQgZW1haWwgYWRkcmVzc2VzIGVuYWJsZXMgYWNjb3VudAogICAgICAvLyBlbnVtZXJhdGlvbiBhdHRhY2tzLCBlc3BlY2lhbGx5IGlmIHRoZSB2YWx1ZSBpcyB1c2VkIGZvcgogICAgICAvLyBlLmcuIHZlcmlmaWNhdGlvbiBvciBhcyBhIHBhc3N3b3JkIGxvZ2luIGlkZW50aWZpZXIuCiAgICAgIC8vCiAgICAgIC8vIElmIGNvbm5lY3Rpbmcgb25seSB0byB5b3VyIG9yZ2FuaXphdGlvbiAob25lIHRlbmFudCksIGNsYWltcy5lbWFpbCBpcyBzYWZlIHRvIHVzZSBpZiB5b3UgaGF2ZSBub3QgYWN0aXZlbHkgZGlzYWJsZWQgZS1tYWlsIHZlcmlmaWNhdGlvbiBkdXJpbmcgc2lnbnVwLgogICAgICAvLwogICAgICAvLyBUaGUgZW1haWwgbWlnaHQgYmUgZW1wdHkgaWYgdGhlIGFjY291bnQgaXMgbm90IGxpbmtlZCB0byBhbiBlbWFpbCBhZGRyZXNzLgogICAgICAvLyBGb3IgYSBodW1hbiByZWFkYWJsZSBpZGVudGlmaWVyLCBjb25zaWRlciB1c2luZyB0aGUgInByZWZlcnJlZF91c2VybmFtZSIgY2xhaW0uCiAgICAgIFtpZiAiZW1haWwiIGluIGNsYWltcyB0aGVuICJlbWFpbCIgZWxzZSBudWxsXTogY2xhaW1zLmVtYWlsLAogICAgfSwKICB9LAp9
-            issuer_url: https://sso.eu.boxyhq.com
-            scope:
-              - email
-              - profile
-          - id: google
-            provider: google
-            client_id: 309128478598-lkpcq0js2lnr3mobmnb6fukjpvd62rsm.apps.googleusercontent.com
-            client_secret: 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
-            mapper_url: base64://bG9jYWwgY2xhaW1zID0gc3RkLmV4dFZhcignY2xhaW1zJyk7CnsKICBpZGVudGl0eTogewogICAgdHJhaXRzOiB7CiAgICAgIC8vIEFsbG93aW5nIHVudmVyaWZpZWQgZW1haWwgYWRkcmVzc2VzIGVuYWJsZXMgYWNjb3VudAogICAgICAvLyBlbnVtZXJhdGlvbiBhdHRhY2tzLCBlc3BlY2lhbGx5IGlmIHRoZSB2YWx1ZSBpcyB1c2VkIGZvcgogICAgICAvLyBlLmcuIHZlcmlmaWNhdGlvbiBvciBhcyBhIHBhc3N3b3JkIGxvZ2luIGlkZW50aWZpZXIuCiAgICAgIC8vCiAgICAgIC8vIElmIGNvbm5lY3Rpbmcgb25seSB0byB5b3VyIG9yZ2FuaXphdGlvbiAob25lIHRlbmFudCksIGNsYWltcy5lbWFpbCBpcyBzYWZlIHRvIHVzZSBpZiB5b3UgaGF2ZSBub3QgYWN0aXZlbHkgZGlzYWJsZWQgZS1tYWlsIHZlcmlmaWNhdGlvbiBkdXJpbmcgc2lnbnVwLgogICAgICAvLwogICAgICAvLyBUaGUgZW1haWwgbWlnaHQgYmUgZW1wdHkgaWYgdGhlIGFjY291bnQgaXMgbm90IGxpbmtlZCB0byBhbiBlbWFpbCBhZGRyZXNzLgogICAgICAvLyBGb3IgYSBodW1hbiByZWFkYWJsZSBpZGVudGlmaWVyLCBjb25zaWRlciB1c2luZyB0aGUgInByZWZlcnJlZF91c2VybmFtZSIgY2xhaW0uCiAgICAgIFtpZiAiZW1haWwiIGluIGNsYWltcyB0aGVuICJlbWFpbCIgZWxzZSBudWxsXTogY2xhaW1zLmVtYWlsLAogICAgfSwKICB9LAp9
-            scope:
-              - email
 
   flows:
     settings:
